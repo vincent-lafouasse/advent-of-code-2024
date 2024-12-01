@@ -6,7 +6,13 @@ use std::io::{self, BufRead, BufReader};
 const INPUT_PATH: &'static str = "src/input1.txt";
 
 fn main() -> io::Result<()> {
-    let file = File::open(INPUT_PATH)?;
+    println!("{}", solve_part1());
+
+    Ok(())
+}
+
+fn solve_part1() -> u32 {
+    let file = File::open(INPUT_PATH).expect("Failed to load input file");
     let reader = BufReader::new(file);
 
     let mut list1: Vec<u32> = Vec::new();
@@ -28,13 +34,9 @@ fn main() -> io::Result<()> {
     list1.sort();
     list2.sort();
 
-    let result: u32 = std::iter::zip(list1.iter(), list2.iter())
+    std::iter::zip(list1.iter(), list2.iter())
         .map(|(n1, n2)| if n1 > n2 { n1 - n2 } else { n2 - n1 })
-        .sum();
-
-    println!("Result of day 1 part 1: {}", result);
-
-    Ok(())
+        .sum()
 }
 
 #[derive(Debug)]
