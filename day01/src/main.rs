@@ -67,14 +67,14 @@ fn load_input(path: &str) -> (Vec<u32>, Vec<u32>) {
 #[derive(Debug)]
 enum ParseError {
     NotANumber,
-    InvalidLen,
+    InvalidFormat,
 }
 
 impl ParseError {
     fn repr(&self) -> &'static str {
         match *self {
             ParseError::NotANumber => "Not a number",
-            ParseError::InvalidLen => "Invalid len",
+            ParseError::InvalidFormat => "Invalid len",
         }
     }
 }
@@ -83,7 +83,7 @@ fn parse_line(line: &str) -> Result<(u32, u32), ParseError> {
     let parts: Vec<&str> = line.split_whitespace().collect();
 
     if parts.len() != 2 {
-        return Err(ParseError::InvalidLen);
+        return Err(ParseError::InvalidFormat);
     }
 
     let n1 = parts[0].parse::<u32>();
