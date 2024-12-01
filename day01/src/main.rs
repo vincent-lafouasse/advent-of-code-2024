@@ -20,7 +20,9 @@ fn solve_part1(path: &str) -> u32 {
     list1.sort();
     list2.sort();
 
-    std::iter::zip(list1.iter(), list2.iter())
+    list1
+        .iter()
+        .zip(list2.iter())
         .map(|(n1, n2)| if n1 > n2 { n1 - n2 } else { n2 - n1 })
         .sum()
 }
@@ -30,11 +32,11 @@ fn solve_part2(path: &str) -> u32 {
     let (list1, list2) = load_input(path);
 
     let mut occurences: HashMap<u32, u32> = HashMap::new();
-    list1.iter().for_each(|e| {
-        if !occurences.contains_key(e) {
+    for e in list1.iter() {
+        if !occurences.contains_key(&e) {
             occurences.insert(*e, count_occurences(*e, &list2));
         }
-    });
+    }
 
     list1.iter().map(|e| e * occurences[e]).sum()
 }
