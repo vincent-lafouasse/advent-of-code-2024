@@ -8,14 +8,14 @@ const INPUT_PATH: &str = "src/input1.txt";
 const TEST_INPUT_PATH: &str = "src/small.txt";
 
 fn main() -> io::Result<()> {
-    println!("{}", solve_part2());
+    println!("{}", solve_part2(INPUT_PATH));
 
     Ok(())
 }
 
 #[allow(unused)]
-fn solve_part1() -> u32 {
-    let (mut list1, mut list2) = load_input();
+fn solve_part1(path: &str) -> u32 {
+    let (mut list1, mut list2) = load_input(path);
 
     list1.sort();
     list2.sort();
@@ -26,8 +26,8 @@ fn solve_part1() -> u32 {
 }
 
 #[allow(unused)]
-fn solve_part2() -> u32 {
-    let (list1, list2) = load_input();
+fn solve_part2(path: &str) -> u32 {
+    let (list1, list2) = load_input(path);
 
     let mut occurences: HashMap<u32, u32> = HashMap::new();
     list1.iter().for_each(|e| {
@@ -43,8 +43,8 @@ fn count_occurences(n: u32, data: &[u32]) -> u32 {
     data.iter().map(|e| if *e == n { 1 } else { 0 }).sum()
 }
 
-fn load_input() -> (Vec<u32>, Vec<u32>) {
-    let file = File::open(INPUT_PATH).expect("Failed to load input file");
+fn load_input(path: &str) -> (Vec<u32>, Vec<u32>) {
+    let file = File::open(path).expect("Failed to load input file");
     let reader = BufReader::new(file);
 
     let mut list1: Vec<u32> = Vec::new();
