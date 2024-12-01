@@ -99,3 +99,18 @@ fn parse_line(line: &str) -> Result<(u32, u32), ParseError> {
         Ok((n1.unwrap(), n2.unwrap()))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_part1() {
+        assert_eq!(11, solve_part1(TEST_INPUT_PATH));
+    }
+
+    #[test]
+    fn test_part2() {
+        assert_eq!(31, solve_part2(TEST_INPUT_PATH));
+    }
+}
