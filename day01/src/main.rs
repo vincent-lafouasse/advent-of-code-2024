@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
@@ -37,6 +38,49 @@ fn solve_part1() -> u32 {
     std::iter::zip(list1.iter(), list2.iter())
         .map(|(n1, n2)| if n1 > n2 { n1 - n2 } else { n2 - n1 })
         .sum()
+}
+
+fn solve_part2() -> u32 {
+    let file = File::open(INPUT_PATH).expect("Failed to load input file");
+    let reader = BufReader::new(file);
+
+    let mut list1: Vec<u32> = Vec::new();
+    let mut list2: Vec<u32> = Vec::new();
+
+    for line in reader.lines() {
+        let line = line.expect("Failed to read line from file");
+        let (n1, n2): (u32, u32) = parse_line(&line).unwrap_or_else(|err| {
+            panic!(
+                "Failed to read line \"{}\"\nEncoutered error {}",
+                line,
+                err.repr()
+            )
+        });
+        list1.push(n1);
+        list2.push(n2);
+    }
+
+    let mut occurences: HashMap<u32, u32> = HashMap::new();
+    list1.iter().for_each(|e| {
+        if !occurences.contains_key(e) {
+            occurences.insert(*e, count_occurences(*e, &list2));
+        }
+    });
+
+    list1
+        .iter()
+        .map(|e| {
+            if occurences.contains_key(e) {
+                occurences[e]
+            } else {
+                0
+            }
+        })
+        .sum()
+}
+
+fn count_occurences(n: u32, data: &[u32]) -> u32 {
+    data.iter().map(|e| if *e == n { 1 } else { 0 }).sum()
 }
 
 #[derive(Debug)]
