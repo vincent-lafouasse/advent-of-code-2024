@@ -3,9 +3,9 @@ use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
 #[allow(unused)]
-const INPUT_PATH: &'static str = "src/input1.txt";
+const INPUT_PATH: &str = "src/input1.txt";
 #[allow(unused)]
-const TEST_INPUT_PATH: &'static str = "src/small.txt";
+const TEST_INPUT_PATH: &str = "src/small.txt";
 
 fn main() -> io::Result<()> {
     println!("{}", solve_part2());
