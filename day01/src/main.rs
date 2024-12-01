@@ -2,10 +2,8 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-#[allow(unused)]
 const INPUT_PATH: &str = "input/data.txt";
-#[allow(unused)]
-const TEST_INPUT_PATH: &str = "input/test.txt";
+const __TEST_INPUT_PATH: &str = "input/test.txt";
 
 fn main() {
     println!("{}", solve_part2(INPUT_PATH));
@@ -104,11 +102,11 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        assert_eq!(11, solve_part1(TEST_INPUT_PATH));
+        assert_eq!(11, solve_part1(__TEST_INPUT_PATH));
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(31, solve_part2(TEST_INPUT_PATH));
+        assert_eq!(31, solve_part2(__TEST_INPUT_PATH));
     }
 }
