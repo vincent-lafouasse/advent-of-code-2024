@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
 use std::fs::File;
-use std::io::{self, BufReader, BufRead};
+use std::io::{self, BufRead, BufReader};
 
 const INPUT_PATH: &'static str = "src/input1.txt";
 
@@ -14,7 +14,13 @@ fn main() -> io::Result<()> {
 
     for line in reader.lines() {
         let line = line.expect("Failed to read line from file");
-        let (n1, n2): (u32, u32) = parse_line(&line).unwrap_or_else(|err| panic!("Failed to read line \"{}\"\nEncoutered error {}", line, err.repr()));
+        let (n1, n2): (u32, u32) = parse_line(&line).unwrap_or_else(|err| {
+            panic!(
+                "Failed to read line \"{}\"\nEncoutered error {}",
+                line,
+                err.repr()
+            )
+        });
         list1.push(n1);
         list2.push(n2);
     }
