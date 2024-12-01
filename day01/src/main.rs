@@ -1,16 +1,14 @@
 use std::collections::HashMap;
 use std::fs::File;
-use std::io::{self, BufRead, BufReader};
+use std::io::{BufRead, BufReader};
 
 #[allow(unused)]
 const INPUT_PATH: &str = "input/data.txt";
 #[allow(unused)]
 const TEST_INPUT_PATH: &str = "input/test.txt";
 
-fn main() -> io::Result<()> {
+fn main() {
     println!("{}", solve_part2(INPUT_PATH));
-
-    Ok(())
 }
 
 #[allow(unused)]
