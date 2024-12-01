@@ -13,8 +13,7 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
-#[allow(unused)]
-fn solve_part1() -> u32 {
+fn load_input() -> (Vec<u32>, Vec<u32>) {
     let file = File::open(INPUT_PATH).expect("Failed to load input file");
     let reader = BufReader::new(file);
 
@@ -33,6 +32,13 @@ fn solve_part1() -> u32 {
         list1.push(n1);
         list2.push(n2);
     }
+
+    (list1, list2)
+}
+
+#[allow(unused)]
+fn solve_part1() -> u32 {
+    let (mut list1, mut list2) = load_input();
 
     list1.sort();
     list2.sort();
@@ -44,24 +50,7 @@ fn solve_part1() -> u32 {
 
 #[allow(unused)]
 fn solve_part2() -> u32 {
-    let file = File::open(INPUT_PATH).expect("Failed to load input file");
-    let reader = BufReader::new(file);
-
-    let mut list1: Vec<u32> = Vec::new();
-    let mut list2: Vec<u32> = Vec::new();
-
-    for line in reader.lines() {
-        let line = line.expect("Failed to read line from file");
-        let (n1, n2): (u32, u32) = parse_line(&line).unwrap_or_else(|err| {
-            panic!(
-                "Failed to read line \"{}\"\nEncoutered error {}",
-                line,
-                err.repr()
-            )
-        });
-        list1.push(n1);
-        list2.push(n2);
-    }
+    let (list1, list2) = load_input();
 
     let mut occurences: HashMap<u32, u32> = HashMap::new();
     list1.iter().for_each(|e| {
