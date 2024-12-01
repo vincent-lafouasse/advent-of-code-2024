@@ -4,7 +4,8 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
-const INPUT_PATH: &'static str = "src/input1.txt";
+// const INPUT_PATH: &'static str = "src/input1.txt";
+const INPUT_PATH: &'static str = "src/small.txt";
 
 fn main() -> io::Result<()> {
     println!("{}", solve_part1());
