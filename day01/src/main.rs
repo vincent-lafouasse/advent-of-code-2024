@@ -31,7 +31,7 @@ fn solve_part2(path: &str) -> u32 {
 
     let mut occurences: HashMap<u32, u32> = HashMap::new();
     for e in list1.iter() {
-        if !occurences.contains_key(&e) {
+        if !occurences.contains_key(e) {
             occurences.insert(*e, count_occurences(*e, &list2));
         }
     }
