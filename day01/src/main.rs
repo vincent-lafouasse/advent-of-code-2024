@@ -1,11 +1,11 @@
-#![allow(dead_code)]
-
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
+#[allow(unused)]
 const INPUT_PATH: &'static str = "src/input1.txt";
-//const INPUT_PATH: &'static str = "src/small.txt";
+#[allow(unused)]
+const TEST_INPUT_PATH: &'static str = "src/small.txt";
 
 fn main() -> io::Result<()> {
     println!("{}", solve_part2());
@@ -13,6 +13,7 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
+#[allow(unused)]
 fn solve_part1() -> u32 {
     let file = File::open(INPUT_PATH).expect("Failed to load input file");
     let reader = BufReader::new(file);
@@ -41,6 +42,7 @@ fn solve_part1() -> u32 {
         .sum()
 }
 
+#[allow(unused)]
 fn solve_part2() -> u32 {
     let file = File::open(INPUT_PATH).expect("Failed to load input file");
     let reader = BufReader::new(file);
