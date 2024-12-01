@@ -4,11 +4,11 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 
-// const INPUT_PATH: &'static str = "src/input1.txt";
-const INPUT_PATH: &'static str = "src/small.txt";
+const INPUT_PATH: &'static str = "src/input1.txt";
+//const INPUT_PATH: &'static str = "src/small.txt";
 
 fn main() -> io::Result<()> {
-    println!("{}", solve_part1());
+    println!("{}", solve_part2());
 
     Ok(())
 }
@@ -68,16 +68,7 @@ fn solve_part2() -> u32 {
         }
     });
 
-    list1
-        .iter()
-        .map(|e| {
-            if occurences.contains_key(e) {
-                occurences[e]
-            } else {
-                0
-            }
-        })
-        .sum()
+    list1.iter().map(|e| e * occurences[e]).sum()
 }
 
 fn count_occurences(n: u32, data: &[u32]) -> u32 {
