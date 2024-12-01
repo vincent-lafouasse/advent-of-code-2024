@@ -28,7 +28,11 @@ fn main() -> io::Result<()> {
     list1.sort();
     list2.sort();
 
-    // let result: u32 = std::iter::zip(list1.iter(), list2.iter()).map(|(n1, n2)|)
+    let result: u32 = std::iter::zip(list1.iter(), list2.iter())
+        .map(|(n1, n2)| if n1 > n2 { n1 - n2 } else { n2 - n1 })
+        .sum();
+
+    println!("Result of day 1 part 1: {}", result);
 
     Ok(())
 }
