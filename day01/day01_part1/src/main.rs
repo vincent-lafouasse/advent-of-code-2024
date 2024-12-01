@@ -40,7 +40,7 @@ impl ParseError {
 }
 
 fn parse_line(line: &str) -> Result<(u32, u32), ParseError> {
-    let parts: Vec<&str> = line.split(" ").collect();
+    let parts: Vec<&str> = line.split_whitespace().collect();
 
     if parts.len() != 2 {
         return Err(ParseError::InvalidLen);
