@@ -1,5 +1,3 @@
-#![allow(unused)]
-
 use regex::Regex;
 use std::fs;
 
@@ -7,7 +5,7 @@ const INPUT_PATH: &str = "input/data.txt";
 const __TEST_INPUT_PATH: &str = "input/test.txt";
 
 fn main() {
-    let res: u32 = solve_part1(__TEST_INPUT_PATH);
+    let res: u32 = solve_part1(INPUT_PATH);
     println!("{res}");
 }
 
