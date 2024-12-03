@@ -12,7 +12,10 @@ fn main() {
 }
 
 fn solve_part1(path: &str) -> u32 {
-    let data = fs::read_to_string("/etc/hosts").expect("Unable to read file");
+    let data: String = fs::read_to_string("/etc/hosts").expect("Unable to read file");
+    let pattern: Regex = Regex::new(r"mul(\d+,\d+)").unwrap();
+    let matches: Vec<&str> = pattern.find_iter(&data).map(|m| m.as_str()).collect();
+    dbg!(matches);
 
     0
 }
