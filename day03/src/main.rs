@@ -1,21 +1,20 @@
 #![allow(unused)]
 
-use std::fs::File;
-use std::io::{BufRead, BufReader};
 use regex::Regex;
+use std::fs;
 
 const INPUT_PATH: &str = "input/data.txt";
 const __TEST_INPUT_PATH: &str = "input/test.txt";
 
-fn main() {}
+fn main() {
+    let res: u32 = solve_part1(__TEST_INPUT_PATH);
+    println!("{res}");
+}
 
-fn solve_part1(path: &str) {
-    let file = File::open(path).expect("Failed to load input file");
-    let reader = BufReader::new(file);
+fn solve_part1(path: &str) -> u32 {
+    let data = fs::read_to_string("/etc/hosts").expect("Unable to read file");
 
-    for line in reader.lines() {
-        let line: String = line.expect("Failed to read line from file");
-    }
+    0
 }
 
 #[cfg(test)]
@@ -24,6 +23,6 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        solve_part1(__TEST_INPUT_PATH);
+        assert_eq!(161, solve_part1(__TEST_INPUT_PATH));
     }
 }
