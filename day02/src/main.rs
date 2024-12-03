@@ -28,15 +28,3 @@ fn parse_line(line: &str) -> Vec<i32> {
         .map(|s| s.parse::<i32>().unwrap())
         .collect()
 }
-
-enum Direction {
-    Increasing,
-    Decreasing,
-}
-
-fn level_is_safe(level: &[i32]) -> bool {
-    let mut buffer = level[0];
-    let mut it = level.iter().next();
-
-    true
-}
