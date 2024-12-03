@@ -12,15 +12,20 @@ fn main() {
     let reader = BufReader::new(file);
 
     for line in reader.lines() {
-        let line = line.expect("Failed to read line from file");
-        let level = parse_line(&line);
-        dbg!(level);
+        let line: String = line.expect("Failed to read line from file");
+        dbg!(&line);
+        let level: Vec<i32> = parse_line(&line);
+        let differences: Vec<i32> = level
+            .windows(2)
+            .map(|window| window[1] - window[0])
+            .collect();
+        dbg!(differences);
     }
 }
 
-fn parse_line(line: &str) -> Vec<u32> {
+fn parse_line(line: &str) -> Vec<i32> {
     line.split_whitespace()
-        .map(|s| s.parse::<u32>().unwrap())
+        .map(|s| s.parse::<i32>().unwrap())
         .collect()
 }
 
@@ -29,7 +34,7 @@ enum Direction {
     Decreasing,
 }
 
-fn level_is_safe(level: &[u32]) -> bool {
+fn level_is_safe(level: &[i32]) -> bool {
     let mut buffer = level[0];
     let mut it = level.iter().next();
 
