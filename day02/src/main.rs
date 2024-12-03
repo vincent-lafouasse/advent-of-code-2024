@@ -40,3 +40,20 @@ fn parse_line(line: &str) -> Vec<i32> {
         .map(|s| s.parse::<i32>().unwrap())
         .collect()
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_part1() {
+        assert_eq!(2, solve_part1(__TEST_INPUT_PATH));
+    }
+
+    /*
+    #[test]
+    fn test_part2() {
+        assert_eq!(31, solve_part2(__TEST_INPUT_PATH));
+    }
+    */
+}
