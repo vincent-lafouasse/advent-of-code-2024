@@ -1,5 +1,8 @@
+#![allow(unused)]
+
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+use regex::Regex;
 
 const INPUT_PATH: &str = "input/data.txt";
 const __TEST_INPUT_PATH: &str = "input/test.txt";
@@ -21,7 +24,6 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        //assert_eq!(2, solve_part1(__TEST_INPUT_PATH));
         solve_part1(__TEST_INPUT_PATH);
     }
 }
