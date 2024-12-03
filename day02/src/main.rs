@@ -1,6 +1,3 @@
-#![allow(dead_code)]
-#![allow(unused)]
-
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
@@ -8,7 +5,7 @@ const INPUT_PATH: &str = "input/data.txt";
 const __TEST_INPUT_PATH: &str = "input/test.txt";
 
 fn main() {
-    let n_safe = solve_part1(__TEST_INPUT_PATH);
+    let n_safe = solve_part1(INPUT_PATH);
     println!("{n_safe}");
 }
 
@@ -49,11 +46,4 @@ mod tests {
     fn test_part1() {
         assert_eq!(2, solve_part1(__TEST_INPUT_PATH));
     }
-
-    /*
-    #[test]
-    fn test_part2() {
-        assert_eq!(31, solve_part2(__TEST_INPUT_PATH));
-    }
-    */
 }
