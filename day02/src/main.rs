@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+#![allow(unused)]
 
 use std::fs::File;
 use std::io::{BufRead, BufReader};
@@ -21,4 +22,16 @@ fn parse_line(line: &str) -> Vec<u32> {
     line.split_whitespace()
         .map(|s| s.parse::<u32>().unwrap())
         .collect()
+}
+
+enum Direction {
+    Increasing,
+    Decreasing,
+}
+
+fn level_is_safe(level: &[u32]) -> bool {
+    let mut buffer = level[0];
+    let mut it = level.iter().next();
+
+    true
 }
