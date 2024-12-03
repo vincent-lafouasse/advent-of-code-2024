@@ -8,7 +8,12 @@ const INPUT_PATH: &str = "input/data.txt";
 const __TEST_INPUT_PATH: &str = "input/test.txt";
 
 fn main() {
-    let file = File::open(__TEST_INPUT_PATH).expect("Failed to load input file");
+    let n_safe = solve_part1(__TEST_INPUT_PATH);
+    println!("{n_safe}");
+}
+
+fn solve_part1(path: &str) -> u32 {
+    let file = File::open(path).expect("Failed to load input file");
     let reader = BufReader::new(file);
 
     let mut n_safe = 0;
@@ -27,7 +32,7 @@ fn main() {
         }
     }
 
-    println!("{n_safe}");
+    n_safe
 }
 
 fn parse_line(line: &str) -> Vec<i32> {
