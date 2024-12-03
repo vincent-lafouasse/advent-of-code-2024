@@ -19,7 +19,9 @@ fn main() {
             .windows(2)
             .map(|window| window[1] - window[0])
             .collect();
-        dbg!(differences);
+        let is_safe: bool = differences.iter().all(|x| *x > 0 && *x < 4)
+            || differences.iter().all(|x| *x > -4 && *x < 0);
+        dbg!(&is_safe);
     }
 }
 
