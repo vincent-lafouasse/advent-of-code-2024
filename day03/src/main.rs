@@ -15,9 +15,18 @@ fn solve_part1(path: &str) -> u32 {
     let data: String = fs::read_to_string(path).expect("Unable to read file");
     let pattern: Regex = Regex::new(r"mul\(\d+,\d+\)").unwrap();
     let matches: Vec<&str> = pattern.find_iter(&data).map(|m| m.as_str()).collect();
-    dbg!(matches);
+    let couples: Vec<(u32, u32)> = matches
+        .iter()
+        .map(|s| s.strip_prefix("mul(").unwrap().strip_suffix(")").unwrap())
+        .map(|s| {
+            let parts: Vec<&str> = s.split(",").collect();
+            let a = parts[0].parse().unwrap();
+            let b = parts[1].parse().unwrap();
+            (a, b)
+        })
+        .collect();
 
-    0
+    couples.iter().map(|(a, b)| a * b).sum()
 }
 
 #[cfg(test)]
